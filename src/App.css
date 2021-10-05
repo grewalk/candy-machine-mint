@@ -1,3 +1,37 @@
-.App {
-  text-align: center;
+body{
+  margin:0;
+  height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background-size:cover;
+  background-position:50%;
+  min-height:720px;
+  color:#fff
 }
+body,code{
+  font-family:Montserrat,sans-serif
+}
+#root{
+  display:"flex"
+}
+.MuiTypography-colorTextSecondary,p{
+  color:#fff
+}
+.MuiGrid-root{
+  padding-bottom:25px;
+  padding-right:8px;
+  padding-left:8px
+}
+#main-logo{
+  color:#fff;
+  font-family:Montserrat,sans-serif;
+  font-size:1.2rem;
+  font-weight:700;
+  letter-spacing:5px;
+  margin:0 10px;
+  text-decoration:none
+}
+.App{
+  text-align:center
+}
+/*# sourceMappingURL=main.ac230498.chunk.css.map */
