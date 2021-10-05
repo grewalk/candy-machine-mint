@@ -137,7 +137,8 @@ const Home = (props: HomeProps) => {
             message: "Congratulations! Mint succeeded!",
             severity: "success",
           });
-        
+          let quack = new Audio("%PUBLIC_URL%/quack.mp3"); //https://mint.sighducks.com/quack.mp3
+          quack.play()
         } else {
           setAlertState({
             open: true,
