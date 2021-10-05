@@ -137,8 +137,7 @@ const Home = (props: HomeProps) => {
             message: "Congratulations! Mint succeeded!",
             severity: "success",
           });
-          let pepsi = new Audio("https://mint.rarewojak.com/pepsi.mp3");
-          pepsi.play()
+        
         } else {
           setAlertState({
             open: true,
