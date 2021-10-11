@@ -31,9 +31,9 @@ const MintButton = styled(Button)`font-size:1.25rem; color :#360837 `; // add yo
 const LogoBar = styled.span`color: #ff38dc;
 font-size: 3rem;`;
 
-const MintCost = "1";
+const MintCost = "0.5";
 
-const TotalMintQty = "1000";
+const TotalMintQty = "125";
 
 const LogoText =  styled.span`color: white;
 font-family: Montserrat, sans-serif;
@@ -137,7 +137,7 @@ const Home = (props: HomeProps) => {
             message: "Congratulations! Mint succeeded!",
             severity: "success",
           });
-          let quack = new Audio("%PUBLIC_URL%/quack.mp3"); //https://mint.sighducks.com/quack.mp3
+          let quack = new Audio("quack.mp3");
           quack.play()
         } else {
           setAlertState({
@@ -205,9 +205,10 @@ const Home = (props: HomeProps) => {
 
       <Grid container>
         <Grid style={boxStyle} item xs={8}  spacing={5}>
-          <Typography variant="h6" component="h2">Ongoing mint with Candy Machine. No time limit! </Typography>
-          <Typography variant="h6" component="h2">Connect your wallet.</Typography>
+          <Typography variant="h6" component="h2">Ongoing mint beginning November 19, 2021 at 18:00 UTC. </Typography>
+          <Typography variant="h6" component="h2">^</Typography>
           <Typography variant="h6" component="h2">Each wallet approval is an attempt to mint!</Typography>
+          <Typography variant="h6" component="h2">We recommend having an extra .02 Sol for gas fees.</Typography>
         </Grid>
 
         <Grid item xs={4} spacing={5}>
