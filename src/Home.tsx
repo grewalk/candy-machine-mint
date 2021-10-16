@@ -19,12 +19,16 @@ import {
   mintOneToken,
   shortenAddress,
 } from "./candy-machine";
+import { FormatAlignCenter } from "@material-ui/icons";
 
 const ConnectButton = styled(WalletDialogButton)`font-size : 1.25rem`;
 
 const CounterText = styled.span``; // add your styles here
 
-const MintContainer = styled.div`text-align: center;`; // add your styles here
+const MintContainer = styled.div`text-align: center; position: fixed;
+top: 80%;
+left: 50%;
+transform: translate(-50%, -50%)`; // add your styles here
 
 const MintButton = styled(Button)`font-size:1.5rem; font-weight:bold; background-color: rgb(15, 236, 144)`; // add your styles here
 
@@ -40,7 +44,13 @@ const SpecialCard = withStyles({
       background: "rgba(0,0,0,.5)",
       color : "white",
       textAlign: "center",
-      display: "grid"
+      display: "block",
+      padding: "15px",
+      position: "fixed",
+      top: "45%",
+    left: "50%",
+  /* bring your own prefixes */
+  transform: "translate(-50%, -50%)"
     },
   })(Card);
 
@@ -189,28 +199,55 @@ const Home = (props: HomeProps) => {
     <Container maxWidth="md">
         <Grid container justifyContent="center" >
        
-        <Typography variant="h6" component="h2" style={{fontFamily: "Headster", fontSize:"72px", fontWeight:"bold"}}>Sigh Ducks</Typography>
+        <Typography variant="h6" component="h2" style={{fontFamily: "Headster", fontSize:"72px", fontWeight:"bold", padding:"5px", margin:"5px"}}>Sigh Ducks</Typography>
         </Grid>
 
       <Grid container>
-        <Grid style={boxStyle} item xs={8}  spacing={5}>
-        <CardContent></CardContent>
+        <SpecialCard>
           <Typography variant="h6" component="h2">Ongoing mint beginning November 19, 2021 at 18:00 UTC. </Typography>
           <Typography variant="h6" component="h2">Each wallet approval is an attempt to mint!</Typography>
           <Typography variant="h6" component="h2">We recommend having an extra 0.02 Sol for gas fees.</Typography>
-        </Grid>
+          <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">Price</Typography>
+                  <Typography variant="body2"  component="p" >{MintCost} SOL</Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">Available</Typography>
+                  <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">Total</Typography>
+                  <Typography variant="body2" component="p">{TotalMintQty}</Typography>
+                </CardContent>
 
-        <Grid item xs={4} spacing={5}>
-          <SpecialCard>
+                </SpecialCard>
+          <Grid item xs={4} spacing={5}>
+{/*          
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">Authority</Typography>
               <Typography variant="body1" ><span style={{float: "left"}}>Candy Machine: </span> <a href={"https://solscan.io/account/" + process.env.REACT_APP_CANDY_MACHINE_ID }  style={{float: "right"}}  target="_blank" rel="noopener noreferrer" >{shortenAddress(process.env.REACT_APP_CANDY_MACHINE_ID || "")}</a></Typography>  
               <Typography variant="body1" ><span style={{float: "left"}}>Config:  </span>   <a href={"https://solscan.io/account/" + process.env.REACT_APP_CANDY_MACHINE_CONFIG } style={{float: "right"}}  target="_blank" rel="noopener noreferrer">{shortenAddress(process.env.REACT_APP_CANDY_MACHINE_CONFIG || "")}</a></Typography>
-            </CardContent>
-          </SpecialCard>
-
-          
+            </CardContent> */}
         </Grid>
+        
+
+        {/* <Grid item xs={4} spacing={5}>
+            <SpecialCard>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">Price</Typography>
+                  <Typography variant="body2"  component="p" >{MintCost} SOL</Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">Available</Typography>
+                  <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">Total</Typography>
+                  <Typography variant="body2" component="p">{TotalMintQty}</Typography>
+                </CardContent>
+            </SpecialCard> 
+        </Grid> */}
+        
       </Grid>
 
       <Grid container spacing={4}>
@@ -228,7 +265,7 @@ const Home = (props: HomeProps) => {
 
         </Grid>*/}
 
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Grid container spacing={1}>
             <Grid  item xs={4} justifyContent="center" spacing={4}>
              <SpecialCard>
@@ -256,7 +293,7 @@ const Home = (props: HomeProps) => {
             </Grid>
           </Grid>
           
-        </Grid>
+        </Grid> */}
       </Grid>
 
       {/* 
