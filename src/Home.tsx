@@ -26,23 +26,11 @@ const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div`text-align: center;`; // add your styles here
 
-const MintButton = styled(Button)`font-size:1.25rem; color :#360837 `; // add your styles here
-
-const LogoBar = styled.span`color: #ff38dc;
-font-size: 3rem;`;
+const MintButton = styled(Button)`font-size:1.5rem; font-weight:bold; background-color: rgb(15, 236, 144)`; // add your styles here
 
 const MintCost = "0.5";
 
 const TotalMintQty = "125";
-
-const LogoText =  styled.span`color: white;
-font-family: Montserrat, sans-serif;
-font-size: 3rem;
-font-weight: bold;
-letter-spacing: 5px;
-margin: 0 10px;
-text-decoration: none;"`;
-
 
 const boxStyle = {background: "rgba(0,0,0,.5)",
   borderRadius: "8px"}
@@ -134,7 +122,7 @@ const Home = (props: HomeProps) => {
         if (!status?.err) {
           setAlertState({
             open: true,
-            message: "Congratulations! Mint succeeded!",
+            message: "Congratulations! Mint succeeded! 🦆",
             severity: "success",
           });
           let quack = new Audio("quack.mp3");
@@ -199,16 +187,17 @@ const Home = (props: HomeProps) => {
     <main>
 
     <Container maxWidth="md">
-        <Grid container  justifyContent="center" >
-          <LogoBar>|</LogoBar><LogoText>SIGH DUCKS</LogoText><LogoBar>|</LogoBar>
+        <Grid container justifyContent="center" >
+       
+        <Typography variant="h6" component="h2" style={{fontFamily: "Headster", fontSize:"72px", fontWeight:"bold"}}>Sigh Ducks</Typography>
         </Grid>
 
       <Grid container>
         <Grid style={boxStyle} item xs={8}  spacing={5}>
+        <CardContent></CardContent>
           <Typography variant="h6" component="h2">Ongoing mint beginning November 19, 2021 at 18:00 UTC. </Typography>
-          <Typography variant="h6" component="h2">^</Typography>
           <Typography variant="h6" component="h2">Each wallet approval is an attempt to mint!</Typography>
-          <Typography variant="h6" component="h2">We recommend having an extra .02 Sol for gas fees.</Typography>
+          <Typography variant="h6" component="h2">We recommend having an extra 0.02 Sol for gas fees.</Typography>
         </Grid>
 
         <Grid item xs={4} spacing={5}>
