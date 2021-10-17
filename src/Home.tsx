@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Countdown from "react-countdown";
-import { Button, CircularProgress, Snackbar,Container,Grid,Typography,Card,CardContent} from "@material-ui/core";
+import { Button, CircularProgress, Snackbar, Container, Grid, Typography, Card, CardContent } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import Alert from "@material-ui/lab/Alert";
 
@@ -36,23 +36,20 @@ const MintCost = "0.5";
 
 const TotalMintQty = "125";
 
-const boxStyle = {background: "rgba(0,0,0,.5)",
-  borderRadius: "8px"}
-
 const SpecialCard = withStyles({
-    root: {
-      background: "rgba(0,0,0,.5)",
-      color : "white",
-      textAlign: "center",
-      display: "block",
-      padding: "15px",
-      position: "fixed",
-      top: "45%",
+  root: {
+    background: "rgba(0,0,0,.5)",
+    color: "white",
+    textAlign: "center",
+    display: "block",
+    padding: "15px",
+    position: "fixed",
+    top: "45%",
     left: "50%",
-  /* bring your own prefixes */
-  transform: "translate(-50%, -50%)"
-    },
-  })(Card);
+    /* bring your own prefixes */
+    transform: "translate(-50%, -50%)"
+  },
+})(Card);
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -101,7 +98,7 @@ const Home = (props: HomeProps) => {
       );
 
       setItemsAvailable(itemsAvailable);
-      setItemsRemaining(itemsRemaining.toString() );
+      setItemsRemaining(itemsRemaining.toString());
       setItemsRedeemed(itemsRedeemed);
 
       setIsSoldOut(itemsRemaining === 0);
@@ -196,107 +193,50 @@ const Home = (props: HomeProps) => {
   return (
     <main>
 
-    <Container maxWidth="md">
+      <Container maxWidth="md">
         <Grid container justifyContent="center" >
-       
-        <Typography variant="h6" component="h2" style={{fontFamily: "Headster", fontSize:"72px", fontWeight:"bold", padding:"5px", margin:"5px"}}>Sigh Ducks</Typography>
+
+          <Typography variant="h6" component="h2" style={{ fontFamily: "Headster", fontSize: "72px", fontWeight: "bold", padding: "5px", margin: "5px" }}>Sigh Ducks</Typography>
         </Grid>
 
-      <Grid container>
-        <SpecialCard>
-          <Typography variant="h6" component="h2">Ongoing mint beginning November 19, 2021 at 18:00 UTC. </Typography>
-          <Typography variant="h6" component="h2">Each wallet approval is an attempt to mint!</Typography>
-          <Typography variant="h6" component="h2">We recommend having an extra 0.02 Sol for gas fees.</Typography>
-          <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Price</Typography>
-                  <Typography variant="body2"  component="p" >{MintCost} SOL</Typography>
-                </CardContent>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Available</Typography>
-                  <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
-                </CardContent>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Total</Typography>
-                  <Typography variant="body2" component="p">{TotalMintQty}</Typography>
-                </CardContent>
-
-                </SpecialCard>
+        <Grid container>
+          <SpecialCard>
+            <Typography variant="h6" component="h2">Ongoing mint beginning November 19, 2021 at 18:00 UTC. </Typography>
+            <Typography variant="h6" component="h2">Each wallet approval is an attempt to mint!</Typography>
+            <Typography variant="h6" component="h2">We recommend having an extra 0.02 Sol for gas fees.</Typography>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">Price</Typography>
+              <Typography variant="body2" component="p" >{MintCost} SOL</Typography>
+            </CardContent>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">Available</Typography>
+              <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
+            </CardContent>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">Total</Typography>
+              <Typography variant="body2" component="p">{TotalMintQty}</Typography>
+            </CardContent>
+            <CardContent>
+              <Countdown
+                date={startDate}
+                onMount={({ completed }) => completed && setIsActive(true)}
+                onComplete={() => setIsActive(true)}
+                renderer={renderCounter}
+              />
+            </CardContent>
+          </SpecialCard>
           <Grid item xs={4} spacing={5}>
-{/*          
+            {/*          
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">Authority</Typography>
               <Typography variant="body1" ><span style={{float: "left"}}>Candy Machine: </span> <a href={"https://solscan.io/account/" + process.env.REACT_APP_CANDY_MACHINE_ID }  style={{float: "right"}}  target="_blank" rel="noopener noreferrer" >{shortenAddress(process.env.REACT_APP_CANDY_MACHINE_ID || "")}</a></Typography>  
               <Typography variant="body1" ><span style={{float: "left"}}>Config:  </span>   <a href={"https://solscan.io/account/" + process.env.REACT_APP_CANDY_MACHINE_CONFIG } style={{float: "right"}}  target="_blank" rel="noopener noreferrer">{shortenAddress(process.env.REACT_APP_CANDY_MACHINE_CONFIG || "")}</a></Typography>
             </CardContent> */}
-        </Grid>
-        
-
-        {/* <Grid item xs={4} spacing={5}>
-            <SpecialCard>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Price</Typography>
-                  <Typography variant="body2"  component="p" >{MintCost} SOL</Typography>
-                </CardContent>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Available</Typography>
-                  <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
-                </CardContent>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Total</Typography>
-                  <Typography variant="body2" component="p">{TotalMintQty}</Typography>
-                </CardContent>
-            </SpecialCard> 
-        </Grid> */}
-        
-      </Grid>
-
-      <Grid container spacing={4}>
-        {/* <Grid item xs={6}>
-          <SpecialCard>
-            <CardContent>
-              <Countdown
-                        date={startDate}
-                        onMount={({ completed }) => completed && setIsActive(true)}
-                        onComplete={() => setIsActive(true)}
-                        renderer={renderCounter}
-              />
-              </CardContent>
-            </SpecialCard>
-
-        </Grid>*/}
-
-        {/* <Grid item xs={12}>
-          <Grid container spacing={1}>
-            <Grid  item xs={4} justifyContent="center" spacing={4}>
-             <SpecialCard>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Price</Typography>
-                  <Typography variant="body2"  component="p" >{MintCost} SOL</Typography>
-                </CardContent>
-              </SpecialCard>
-            </Grid>
-            <Grid item xs={4} justifyContent="center" spacing={4}>
-              <SpecialCard>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Available</Typography>
-                  <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
-                </CardContent>
-              </SpecialCard>
-            </Grid>
-            <Grid item xs={4} justifyContent="center"  spacing={4}>
-              <SpecialCard>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">Total</Typography>
-                  <Typography variant="body2" component="p">{TotalMintQty}</Typography>
-                </CardContent>
-              </SpecialCard>
-            </Grid>
           </Grid>
-          
-        </Grid> */}
-      </Grid>
 
-      {/* 
+        </Grid>
+
+        {/* 
       {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
@@ -309,38 +249,38 @@ const Home = (props: HomeProps) => {
 
       {wallet && <p>Remaining: {itemsRemaining}</p>}*/}
 
-      <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
+        <MintContainer>
+          {!wallet ? (
+            <ConnectButton>Connect Wallet</ConnectButton>
+          ) : (
+            <MintButton
+              disabled={isSoldOut || isMinting || !isActive}
+              onClick={onMint}
+              variant="contained"
+            >
+              {isSoldOut ? (
+                "SOLD OUT"
+              ) : isActive ? (
+                isMinting ? (
+                  <CircularProgress />
+                ) : (
+                  "MINT"
+                )
               ) : (
-                "MINT"
-              )
-            ) : (
-              <SpecialCard>
-            <CardContent>
-              <Countdown
-                        date={startDate}
-                        onMount={({ completed }) => completed && setIsActive(true)}
-                        onComplete={() => setIsActive(true)}
-                        renderer={renderCounter}
-              />
-              </CardContent>
-            </SpecialCard>
-            )}
-          </MintButton>
-        )}
-      </MintContainer>
+                <SpecialCard>
+                  <CardContent>
+                    <Countdown
+                      date={startDate}
+                      onMount={({ completed }) => completed && setIsActive(true)}
+                      onComplete={() => setIsActive(true)}
+                      renderer={renderCounter}
+                    />
+                  </CardContent>
+                </SpecialCard>
+              )}
+            </MintButton>
+          )}
+        </MintContainer>
       </Container >
 
       <Snackbar
@@ -368,10 +308,11 @@ interface AlertState {
 const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
   return (
     <Typography gutterBottom variant="h5" component="h1">
-      <CounterText>
-        {hours + (days || 0) * 24} hours, {minutes} minutes, {seconds} seconds
-      </CounterText>
+      <CounterText hidden={completed}>
+        {days || 0} days, {hours} hours, {minutes} minutes, {seconds} seconds
+      </CounterText >
     </Typography>
+    
   );
 };
 
