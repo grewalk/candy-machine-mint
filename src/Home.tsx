@@ -32,9 +32,9 @@ transform: translate(-50%, -50%)`; // add your styles here
 
 const MintButton = styled(Button)`font-size:1.5rem; font-weight:bold; background-color: rgb(15, 236, 144)`; // add your styles here
 
-const MintCost = "0.5";
+const MintCost = "0.777";
 
-const TotalMintQty = "125";
+const TotalMintQty = "777";
 
 const SpecialCard = withStyles({
   root: {
@@ -132,8 +132,8 @@ const Home = (props: HomeProps) => {
             message: "Congratulations! Mint succeeded! 🦆",
             severity: "success",
           });
-          let quack = new Audio("quack.mp3");
-          quack.play()
+          let dook = new Audio("dook.m4a");
+          dook.play()
         } else {
           setAlertState({
             open: true,
@@ -201,20 +201,20 @@ const Home = (props: HomeProps) => {
 
         <Grid container>
           <SpecialCard>
-            <Typography variant="h6" component="h2">Ongoing mint beginning November 19, 2021 at 18:00 UTC. </Typography>
-            <Typography variant="h6" component="h2">Each wallet approval is an attempt to mint!</Typography>
-            <Typography variant="h6" component="h2">We recommend having an extra 0.02 Sol for gas fees.</Typography>
+            <Typography variant="h6" component="h2"><b>Ongoing mint beginning November 12, 2021 at 18:00 UTC.</b></Typography>
+            <Typography variant="h6" component="h2"><b>Each wallet approval is an attempt to mint!</b></Typography>
+            <Typography variant="h6" component="h2"><b>We recommend having an extra 0.02 Sol for transaction fees.</b></Typography>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">Price</Typography>
-              <Typography variant="body2" component="p" >{MintCost} SOL</Typography>
+              <Typography gutterBottom variant="h4" component="h4">Price</Typography>
+              <Typography variant="h6" component="p" >{MintCost} SOL</Typography>
             </CardContent>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">Available</Typography>
-              <Typography variant="body2" component="p" >{itemsRemaining}</Typography>
+              <Typography gutterBottom variant="h4" component="h4">Available</Typography>
+              <Typography variant="h6" component="p" >{itemsRemaining}</Typography>
             </CardContent>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">Total</Typography>
-              <Typography variant="body2" component="p">{TotalMintQty}</Typography>
+              <Typography gutterBottom variant="h4" component="h4">Total</Typography>
+              <Typography variant="h6" component="p">{TotalMintQty}</Typography>
             </CardContent>
             <CardContent>
               <Countdown
